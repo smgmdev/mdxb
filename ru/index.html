@@ -571,8 +571,28 @@ function submitConsult() {
   var name = document.getElementById('popupName').value.trim();
   var phone = document.getElementById('popupPhone').value.trim();
   if (!name || !phone) { alert('Пожалуйста, введите имя и номер телефона.'); return; }
-  document.getElementById('popupForm').style.display = 'none';
-  document.getElementById('popupSuccess').style.display = 'block';
+  var btn = document.querySelector('#popupForm .submit-btn');
+  btn.textContent = 'Отправка...';
+  btn.disabled = true;
+  fetch('https://formsubmit.co/ajax/business@stankeviciusinternational.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      phone: phone,
+      preferred_time: selectedTime,
+      _subject: 'Новая заявка на ипотечную консультацию — ' + name
+    })
+  }).then(function(res) {
+    document.getElementById('popupForm').style.display = 'none';
+    document.getElementById('popupSuccess').style.display = 'block';
+  }).catch(function() {
+    document.getElementById('popupForm').style.display = 'none';
+    document.getElementById('popupSuccess').style.display = 'block';
+  }).finally(function() {
+    btn.textContent = 'Заказать обратный звонок';
+    btn.disabled = false;
+  });
 }
 
 document.getElementById('consultPopup').addEventListener('click', function(e) {
