@@ -580,8 +580,9 @@ function submitConsult() {
     body: JSON.stringify({
       name: name,
       phone: phone,
-      preferred_time: selectedTime,
-      _subject: 'Новая заявка на ипотечную консультацию — ' + name
+      preferred_time: {anytime:'Любое время',morning:'Утро (9:00 – 12:00)',afternoon:'День (12:00 – 17:00)',evening:'Вечер (17:00 – 20:00)'}[selectedTime] || selectedTime,
+      language: 'Russian Form',
+      _subject: '[RU] Заявка на ипотечную консультацию — ' + name
     })
   }).then(function(res) {
     document.getElementById('popupForm').style.display = 'none';

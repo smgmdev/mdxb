@@ -580,8 +580,9 @@ function submitConsult() {
     body: JSON.stringify({
       name: name,
       phone: phone,
-      preferred_time: selectedTime,
-      _subject: 'New Mortgage Consultation Request — ' + name
+      preferred_time: {anytime:'Call anytime',morning:'Morning (9AM – 12PM)',afternoon:'Afternoon (12PM – 5PM)',evening:'Evening (5PM – 8PM)'}[selectedTime] || selectedTime,
+      language: 'English Form',
+      _subject: '[EN] Mortgage Consultation Request — ' + name
     })
   }).then(function(res) {
     document.getElementById('popupForm').style.display = 'none';
