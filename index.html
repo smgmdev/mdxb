@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Best Mortgage in Dubai Agency | Mortgage Dubai</title>
-<meta name="description" content="Dubai's leading mortgage agency. Get the best property mortgage in Dubai and UAE with rates from 3.99%. We help you secure real estate loans for apartments, villas, and off-plan properties. Fast pre-approval in 24 hours.">
+<meta name="description" content="Having problems with bank mortgage? Can't get approval? We will help you. Best mortgage agency in Dubai and UAE with rates from 3%. Property loans for apartments, villas, and real estate.">
 <meta name="keywords" content="mortgage dubai, mortgage uae, property loan dubai, property mortgage dubai, property loan uae, real estate mortgage, real estate loan, apartment mortgage, get mortgage in dubai">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -98,6 +98,46 @@
   .site-footer a:hover { text-decoration: underline; }
   .copyright { padding: 16px 48px 24px; font-size: 13px; color: #ccc; background: #000; }
 
+  /* Consultation popup */
+  .popup-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+  .popup-overlay.active { display: flex; }
+  .popup { background: #fff; border-radius: 12px; padding: 40px; width: 90%; max-width: 440px; position: relative; }
+  .popup-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; cursor: pointer; color: #999; line-height: 1; }
+  .popup-close:hover { color: #333; }
+  .popup h3 { font-size: 22px; font-weight: 600; color: #333; margin-bottom: 4px; }
+  .popup p { font-size: 14px; color: #666; margin-bottom: 24px; }
+  .popup label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 6px; }
+  .popup input, .popup select { width: 100%; padding: 12px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; font-family: inherit; margin-bottom: 16px; outline: none; transition: border-color 0.2s; }
+  .popup input:focus, .popup select:focus { border-color: #db0011; }
+  .popup .submit-btn { width: 100%; padding: 14px; background: #db0011; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  .popup .submit-btn:hover { background: #b8000e; }
+  .popup .success-msg { text-align: center; padding: 20px 0; }
+  .popup .success-msg svg { width: 48px; height: 48px; margin-bottom: 12px; }
+  .popup .success-msg h4 { font-size: 18px; font-weight: 600; color: #333; margin-bottom: 6px; }
+  .popup .success-msg p { font-size: 14px; color: #666; margin: 0; }
+  /* Eligibility popup */
+  .elig-row { margin-bottom: 16px; }
+  .elig-row label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 6px; }
+  .elig-input-wrap { position: relative; }
+  .elig-input-wrap span.currency { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 14px; color: #999; font-weight: 600; }
+  .elig-input-wrap input { width: 100%; padding: 12px 14px 12px 50px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.2s; }
+  .elig-input-wrap input:focus { border-color: #db0011; }
+  .elig-result { background: #f7f7f7; border-radius: 8px; padding: 20px; margin-top: 20px; margin-bottom: 20px; }
+  .elig-result-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
+  .elig-result-row:last-child { border-bottom: none; }
+  .elig-result-label { font-size: 13px; color: #666; }
+  .elig-result-value { font-size: 15px; font-weight: 700; color: #333; }
+  .elig-result-value.highlight { color: #db0011; font-size: 18px; }
+  .elig-note { font-size: 12px; color: #999; margin-bottom: 16px; }
+  /* Custom time picker */
+  .time-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+  .time-opt { padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; background: #fff; cursor: pointer; text-align: center; font-size: 13px; font-family: inherit; color: #333; transition: all 0.2s; }
+  .time-opt:hover { border-color: #db0011; background: #fff5f5; }
+  .time-opt.selected { border-color: #db0011; background: #db0011; color: #fff; }
+  .time-opt .time-icon { display: block; font-size: 18px; margin-bottom: 4px; }
+  .time-opt .time-label { display: block; font-weight: 600; font-size: 13px; }
+  .time-opt .time-range { display: block; font-size: 11px; opacity: 0.7; margin-top: 2px; }
+
   @media (max-width: 768px) {
     .hero { flex-direction: column; }
     .hero-content { max-width: 100%; padding: 40px 24px; }
@@ -156,18 +196,18 @@
   </div>
 
   <div class="hero-content">
-    <h1>Buying Property in Dubai?<br>We Handle Your Mortgage.</h1>
+    <h1>Struggling to Get a Mortgage?<br>We'll Get It For You.</h1>
     <p class="hero-desc">
-      Get pre-approved online<sup>*</sup> in as fast as <strong>24 hours</strong><br>
-      with rates starting from <strong>3.99% per annum</strong>
+      Bank rejected your application? Low credit score? Complex income?<br>
+      We negotiate with <strong>20+ banks in the UAE</strong> to find you the best deal — rates from <strong>3%</strong>
     </p>
     <a href="#" class="hero-link">
-      Mortgage plans and benefits
+      How we help you get approved
       <svg viewBox="0 0 14 14" fill="currentColor"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
     </a>
     <div class="btn-group">
-      <button class="btn-primary">Get a free consultation</button>
-      <button class="btn-secondary">Check your eligibility</button>
+      <button class="btn-primary" onclick="openPopup()">Get a free consultation</button>
+      <button class="btn-secondary" onclick="openElig()">Check your eligibility</button>
     </div>
     <div class="mobile-banner">
       <div class="mobile-banner-icon">
@@ -179,8 +219,8 @@
       </div>
       <div class="mobile-banner-text">
         <svg class="phone-icon" viewBox="0 0 14 14" fill="none" stroke="#333" stroke-width="1.2"><rect x="3" y="1" width="8" height="12" rx="1.5"/><circle cx="7" cy="11" r="0.8" fill="#333"/></svg>
-        Need help? Call us at <strong>+971 4 123 4567</strong><br>
-        or <a href="#">request a callback</a> from our mortgage advisors
+        Speak to a mortgage advisor: <strong>+971 58 575 9678</strong><br>
+        or <a href="#" onclick="event.preventDefault(); openPopup();">request a callback</a> — free, no obligation
       </div>
     </div>
   </div>
@@ -192,7 +232,7 @@
 
 <!-- THREE STEPS SECTION -->
 <section class="steps-section">
-  <h2>Three simple steps to your Dubai mortgage</h2>
+  <h2>How we help you get your mortgage</h2>
   <div class="steps-grid">
     <div class="step">
       <div class="step-icon">
@@ -206,8 +246,8 @@
         </svg>
       </div>
       <div class="step-num">Step 1</div>
-      <div class="step-title">Tell us about your property</div>
-      <div class="step-desc">Share your property details, budget, and preferred mortgage type — we'll match you with the best options</div>
+      <div class="step-title">Share your situation</div>
+      <div class="step-desc">Tell us about your property, income, and any previous rejections — we assess your profile for free</div>
     </div>
     <div class="step">
       <div class="step-icon">
@@ -220,8 +260,8 @@
         </svg>
       </div>
       <div class="step-num">Step 2</div>
-      <div class="step-title">Get pre-approved online</div>
-      <div class="step-desc">Submit your application and documents online — receive pre-approval in as fast as 24 hours</div>
+      <div class="step-title">We negotiate with banks</div>
+      <div class="step-desc">We submit your application to 20+ banks in the UAE, negotiate the best rates, and handle all the paperwork</div>
     </div>
     <div class="step">
       <div class="step-icon">
@@ -232,8 +272,8 @@
         </svg>
       </div>
       <div class="step-num">Step 3</div>
-      <div class="step-title">Close and move in</div>
-      <div class="step-desc">Our team manages the entire closing process with the bank, developer, and Dubai Land Department</div>
+      <div class="step-title">You get approved</div>
+      <div class="step-desc">Receive your bank approval and we guide you through closing with the bank, developer, and Dubai Land Department</div>
     </div>
   </div>
 </section>
@@ -247,29 +287,29 @@
       <div>
         <div class="accordion-item">
           <button class="accordion-btn" onclick="toggleAccordion(this)">
-            Mortgage plans and benefits
+            Why use a mortgage broker?
             <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content">
-            We offer fixed and variable rate mortgages for villas, apartments, townhouses, and off-plan properties across Dubai. Enjoy competitive rates from 3.99%, financing up to 80% for UAE residents (75% for non-residents), and flexible repayment terms of up to 25 years.
+            Going directly to one bank limits your options. We work with 20+ banks across the UAE to compare rates, negotiate better terms, and find the right lender for your situation — even if you've been rejected before. Our service is free for buyers; the bank pays our commission.
           </div>
         </div>
         <div class="accordion-item">
           <button class="accordion-btn" onclick="toggleAccordion(this)">
-            Documents you'll need
+            What documents will the bank need?
             <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content">
-            You will need: valid passport and UAE visa, Emirates ID, salary certificate or proof of income, 6 months of bank statements, property details or MOU (Memorandum of Understanding), and proof of down payment funds.
+            Typically banks require: valid passport and UAE visa, Emirates ID, salary certificate or proof of income, 6 months of bank statements, property details or MOU, and proof of down payment. We help you prepare everything so your application is complete from day one.
           </div>
         </div>
         <div class="accordion-item">
           <button class="accordion-btn" onclick="toggleAccordion(this)">
-            Rates and fees
+            What if my application was rejected?
             <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content">
-            Rates start from 3.99% p.a. for fixed-rate plans and EIBOR + 1.5% for variable. Processing fee is 1% of the loan amount (min. AED 5,000). Property valuation fee is AED 2,500–3,500. No early settlement fees after 3 years on select plans.
+            A rejection from one bank doesn't mean you can't get a mortgage. Each bank has different criteria. We review why you were declined, fix any issues with your application, and resubmit to banks that are more likely to approve your profile. Many of our clients get approved after being rejected elsewhere.
           </div>
         </div>
       </div>
@@ -343,7 +383,7 @@
 
 <!-- FOOTER NOTES -->
 <div class="footer-notes">
-  <p><sup>*</sup>You may be eligible for online pre-approval if you meet the following criteria:</p>
+  <p><sup>*</sup>Mortgage Dubai acts as a mortgage broker and does not lend directly. We connect you with licensed banks and financial institutions in the UAE. General eligibility criteria set by banks include:</p>
   <ul>
     <li>UAE resident or non-resident with valid passport;</li>
     <li>Minimum monthly income of AED 15,000 (salaried) or AED 25,000 (self-employed);</li>
@@ -351,23 +391,114 @@
     <li>Maximum loan-to-value of 80% for residents, 75% for non-residents; AND</li>
     <li>Property value of AED 500,000 or above</li>
   </ul>
-  <p>Non-residents may be required to provide additional documentation or attend a video consultation with one of our mortgage advisors.</p>
-  <p>*Subject to eligibility, bank approval, and upon providing all required documents. Rates and terms may vary by lender. Terms and conditions apply.</p>
+  <p>Final approval, rates, and terms are determined by the lending bank. Each bank has different criteria — we help you find the best match for your profile.</p>
+  <p>*Our consultation is free. The bank pays our commission upon successful mortgage completion. Terms and conditions apply.</p>
 </div>
 
-<div class="recaptcha-note">
-  This site is protected by reCAPTCHA and the Google <a href="#">Privacy Policy</a> &#8599; and <a href="#">Terms of Service</a> &#8599; apply.
-</div>
 
 <div class="site-footer">
-  <a href="#">Privacy Policy</a>
-  <a href="#">Terms of Use</a>
-  <a href="#">Disclaimer</a>
-  <a href="#">Contact Us</a>
+  <a href="privacy-policy.html">Privacy Policy</a>
+  <a href="terms.html">Terms of Use</a>
+  <a href="disclaimer.html">Disclaimer</a>
+  <a href="#" onclick="event.preventDefault(); openPopup();">Contact Us</a>
 </div>
 
 <div class="copyright">
   &copy; Copyright. Mortgage Dubai 2002-2026. All rights reserved.
+</div>
+
+<!-- ELIGIBILITY POPUP -->
+<div class="popup-overlay" id="eligPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closeElig()">&times;</button>
+    <h3>Check Your Eligibility</h3>
+    <p>Enter your details to see how much mortgage you could get</p>
+    <div class="elig-row">
+      <label>Property value</label>
+      <div class="elig-input-wrap">
+        <span class="currency">AED</span>
+        <input type="text" id="eligProperty" placeholder="e.g. 2,000,000" oninput="calcElig()">
+      </div>
+    </div>
+    <div class="elig-row">
+      <label>Monthly salary</label>
+      <div class="elig-input-wrap">
+        <span class="currency">AED</span>
+        <input type="text" id="eligSalary" placeholder="e.g. 25,000" oninput="calcElig()">
+      </div>
+    </div>
+    <div class="elig-row">
+      <label>Initial deposit (down payment)</label>
+      <div class="elig-input-wrap">
+        <span class="currency">AED</span>
+        <input type="text" id="eligDeposit" placeholder="e.g. 400,000" oninput="calcElig()">
+      </div>
+    </div>
+    <div class="elig-result" id="eligResult" style="display:none;">
+      <div class="elig-result-row">
+        <span class="elig-result-label">Mortgage amount needed</span>
+        <span class="elig-result-value highlight" id="eligMortgage">—</span>
+      </div>
+      <div class="elig-result-row">
+        <span class="elig-result-label">Loan-to-value (LTV)</span>
+        <span class="elig-result-value" id="eligLTV">—</span>
+      </div>
+      <div class="elig-result-row">
+        <span class="elig-result-label">Est. monthly payment (3%, 25 yrs)</span>
+        <span class="elig-result-value" id="eligMonthly">—</span>
+      </div>
+      <div class="elig-result-row">
+        <span class="elig-result-label">Required salary (bank rule)</span>
+        <span class="elig-result-value" id="eligReqSalary">—</span>
+      </div>
+    </div>
+    <p class="elig-note">*Estimates only. Actual rates and terms depend on the lending bank.</p>
+    <button class="submit-btn" onclick="closeElig(); openPopup();">Speak to an advisor</button>
+  </div>
+</div>
+
+<!-- CONSULTATION POPUP -->
+<div class="popup-overlay" id="consultPopup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup()">&times;</button>
+    <div id="popupForm">
+      <h3>Get a Free Consultation</h3>
+      <p>Leave your details and our mortgage advisor will call you</p>
+      <label for="popupName">Your name</label>
+      <input type="text" id="popupName" placeholder="e.g. Ahmed Al Maktoum">
+      <label for="popupPhone">Phone number</label>
+      <input type="tel" id="popupPhone" placeholder="e.g. +971 50 123 4567">
+      <label>Preferred time to call</label>
+      <div class="time-options" id="timeOptions">
+        <div class="time-opt selected" data-value="anytime" onclick="selectTime(this)">
+          <span class="time-icon">&#9742;</span>
+          <span class="time-label">Anytime</span>
+          <span class="time-range">I'm flexible</span>
+        </div>
+        <div class="time-opt" data-value="morning" onclick="selectTime(this)">
+          <span class="time-icon">&#9788;</span>
+          <span class="time-label">Morning</span>
+          <span class="time-range">9AM – 12PM</span>
+        </div>
+        <div class="time-opt" data-value="afternoon" onclick="selectTime(this)">
+          <span class="time-icon">&#9728;</span>
+          <span class="time-label">Afternoon</span>
+          <span class="time-range">12PM – 5PM</span>
+        </div>
+        <div class="time-opt" data-value="evening" onclick="selectTime(this)">
+          <span class="time-icon">&#9790;</span>
+          <span class="time-label">Evening</span>
+          <span class="time-range">5PM – 8PM</span>
+        </div>
+      </div>
+      <button class="submit-btn" onclick="submitConsult()">Request a callback</button>
+    </div>
+    <div id="popupSuccess" class="success-msg" style="display:none;">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#e8f5e9"/><path d="M14 24l7 7 13-13" stroke="#2e7d32" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h4>Thank you!</h4>
+      <p>Our mortgage advisor will call you soon.</p>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -384,6 +515,100 @@ function toggleAccordion(btn) {
     btn.classList.add('open');
     content.classList.add('show');
   }
+}
+
+var selectedTime = 'anytime';
+
+function selectTime(el) {
+  document.querySelectorAll('.time-opt').forEach(function(o) { o.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedTime = el.getAttribute('data-value');
+}
+
+function openPopup() {
+  document.getElementById('popupForm').style.display = 'block';
+  document.getElementById('popupSuccess').style.display = 'none';
+  document.getElementById('popupName').value = '';
+  document.getElementById('popupPhone').value = '';
+  selectedTime = 'anytime';
+  document.querySelectorAll('.time-opt').forEach(function(o) { o.classList.remove('selected'); });
+  document.querySelector('.time-opt[data-value="anytime"]').classList.add('selected');
+  document.getElementById('consultPopup').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePopup() {
+  document.getElementById('consultPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function submitConsult() {
+  var name = document.getElementById('popupName').value.trim();
+  var phone = document.getElementById('popupPhone').value.trim();
+  if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+  document.getElementById('popupForm').style.display = 'none';
+  document.getElementById('popupSuccess').style.display = 'block';
+}
+
+document.getElementById('consultPopup').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
+
+// Eligibility popup
+function openElig() {
+  document.getElementById('eligProperty').value = '';
+  document.getElementById('eligSalary').value = '';
+  document.getElementById('eligDeposit').value = '';
+  document.getElementById('eligResult').style.display = 'none';
+  document.getElementById('eligPopup').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeElig() {
+  document.getElementById('eligPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('eligPopup').addEventListener('click', function(e) {
+  if (e.target === this) closeElig();
+});
+
+function parseNum(str) {
+  return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+}
+
+function formatAED(n) {
+  return 'AED ' + Math.round(n).toLocaleString();
+}
+
+function calcElig() {
+  var prop = parseNum(document.getElementById('eligProperty').value);
+  var salary = parseNum(document.getElementById('eligSalary').value);
+  var deposit = parseNum(document.getElementById('eligDeposit').value);
+
+  if (prop <= 0) { document.getElementById('eligResult').style.display = 'none'; return; }
+
+  var mortgage = Math.max(prop - deposit, 0);
+  var ltv = prop > 0 ? ((mortgage / prop) * 100).toFixed(1) : 0;
+
+  // Monthly payment: 3% annual, 25 years
+  var r = 0.03 / 12;
+  var n = 25 * 12;
+  var monthly = mortgage > 0 ? mortgage * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : 0;
+
+  // Bank rule: EMI should not exceed 50% of salary
+  var reqSalary = monthly * 2;
+
+  document.getElementById('eligMortgage').textContent = formatAED(mortgage);
+  document.getElementById('eligLTV').textContent = ltv + '%';
+  document.getElementById('eligMonthly').textContent = formatAED(monthly);
+  document.getElementById('eligReqSalary').textContent = formatAED(reqSalary);
+
+  // Color LTV
+  var ltvEl = document.getElementById('eligLTV');
+  ltvEl.style.color = parseFloat(ltv) > 80 ? '#db0011' : '#333';
+
+  document.getElementById('eligResult').style.display = 'block';
 }
 </script>
 
